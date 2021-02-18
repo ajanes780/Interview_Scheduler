@@ -1,6 +1,6 @@
 import React from "react";
 import "components/Appointment/styles.scss";
-import Button from "components/Button";
+// import Button from "components/Button";
 
 export default function Status(props) {
   return (
