@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "components/Appointment/styles.scss";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
+// import bookInterview from "components/Application";
 
 export default function From(props) {
   const [name, setName] = useState(props.name || "");
@@ -10,13 +11,15 @@ export default function From(props) {
   const reset = () => {
     setName("");
     setInterviewer(null);
+    props.onCancel();
   };
-  // const cancel = () => {
+
+  // const onCancel = () => {
   //   props.onCancel();
   //   reset();
   // };
 
-  const save = () => {
+  const save = (id, interview) => {
     props.onSave(name, interviewer);
     setName(name);
   };
@@ -33,6 +36,7 @@ export default function From(props) {
             value={name}
             onChange={(event) => setName(event.target.value)}
             onSubmit={(event) => event.preventDefault()}
+            onCancel={() => {}}
             /*
             This must be a controlled component
             */

@@ -17,6 +17,10 @@ export default function Application(props) {
 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+  }
+
   const myMappedApp = dailyAppointments.map((app) => {
     const interview = getInterview(state, app.interview);
     return (
@@ -25,6 +29,7 @@ export default function Application(props) {
         time={app.time}
         interviewer={app.interviewer}
         interview={interview}
+        bookInterview={bookInterview}
         {...app}
       />
     );
@@ -39,7 +44,6 @@ export default function Application(props) {
       axios.get(urlApp),
       axios.get(urlInv),
     ]).then((all) => {
-      console.log("this is all", all);
       setState((prev) => ({
         ...prev,
         days: all[0].data,
@@ -48,7 +52,6 @@ export default function Application(props) {
       }));
     });
   }, []);
-  console.log("this is state.interviers", state.interviewers);
   return (
     <main className="layout">
       <section className="sidebar">
