@@ -3,61 +3,52 @@ import "components/Application.scss";
 import DayList from "components/DayList.js";
 import Appointment from "components/Appointment";
 import axios from "axios";
-
-const appointments = [
-  {
-    id: 1,
-    time: "12pm",
-  },
-  {
-    id: 56,
-    time: "12pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      },
-    },
-  },
-
-  {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer: {
-        id: 1,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      },
-    },
-  },
-];
-const myMappedApp = appointments.map((app) => {
-  return (
-    <Appointment
-      key={app.id}
-      time={app.time}
-      interviewer={app.interviewer}
-      {...app}
-    />
-  );
-});
+import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 
 export default function Application(props) {
-  const [days, setDays] = useState([]);
-  const [day, setDay] = useState("Monday");
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {},
+    interviewers: {},
+  });
+
+  const setDay = (day) => setState({ ...state, day });
+
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
+
+  const myMappedApp = dailyAppointments.map((app) => {
+    const interview = getInterview(state, app.interview);
+    return (
+      <Appointment
+        key={app.id}
+        time={app.time}
+        interviewer={app.interviewer}
+        interview={interview}
+        {...app}
+      />
+    );
+  });
 
   useEffect(() => {
-    const url = "http://localhost:8001/api/days";
-    axios.get(url).then((response) => {
-      setDays(response.data);
-      // console.log("this is the res data", response.data);
+    const urldays = "http://localhost:8001/api/days";
+    const urlApp = " http://localhost:8001/api/appointments";
+    const urlInv = "http://localhost:8001/api/interviewers";
+    Promise.all([
+      axios.get(urldays),
+      axios.get(urlApp),
+      axios.get(urlInv),
+    ]).then((all) => {
+      console.log("this is all", all);
+      setState((prev) => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data,
+      }));
     });
   }, []);
-
+  console.log("this is state.interviers", state.interviewers);
   return (
     <main className="layout">
       <section className="sidebar">
@@ -68,7 +59,7 @@ export default function Application(props) {
         />
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
-          <DayList days={days} day={day} setDay={setDay} />
+          <DayList days={state.days} day={state.day} setDay={setDay} />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
