@@ -8,6 +8,8 @@ import Form from "components/Appointment/Form";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
+const EDIT = "EDIT";
+const FORM = "FORM";
 
 export default function Appointment(props) {
   // console.log("this is props.int", props.interview);
@@ -16,6 +18,10 @@ export default function Appointment(props) {
       student: name,
       interviewer,
     };
+    props.bookInterview(props.id, interview);
+    transition(SHOW);
+
+    console.log("SAVE CLICKED");
   }
 
   const { mode, transition, back } = useVisualMode(
@@ -25,29 +31,30 @@ export default function Appointment(props) {
   return (
     <article className="appointment">
       <Header time={props.time}></Header>
-
-      {mode === EMPTY && (
-        <Empty
-          onAdd={() => {
-            transition(CREATE);
-          }}
-        />
-      )}
+      {mode === EMPTY && <Empty onAdd={() => transition(FORM)} />}
       {mode === SHOW && (
         <Show
+          onEdit={() => transition(EDIT)}
           student={props.interview.student}
-          interviewer={props.interview.interviewer}
+          interviewer={props.interviewers}
         />
       )}
-      {mode === CREATE && (
+      {mode === FORM && (
         <Form
-          interviewers={[]}
-          onSave={() => {
-            );
-          }}
-          onCancel={() => {
-            back(EMPTY);
-          }}
+          // name={props.interview.student}
+          interviewers={props.interviewers}
+          // interviewer={props.interview.interviewer.id}
+          onSave={save}
+          onCancel={back}
+        />
+      )}
+      {mode === EDIT && (
+        <Form
+          name={props.interview.student}
+          interviewers={props.interviewers}
+          interviewer={props.interview.interviewer.id}
+          onSave={save}
+          onCancel={back}
         />
       )}
     </article>
