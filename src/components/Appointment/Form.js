@@ -14,16 +14,6 @@ export default function From(props) {
     props.onCancel();
   };
 
-  // const onCancel = () => {
-  //   props.onCancel();
-  //   reset();
-  // };
-
-  const save = (id, interview) => {
-    props.onSave(name, interviewer);
-    setName(name);
-  };
-
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -55,7 +45,7 @@ export default function From(props) {
           <Button onClick={reset} danger>
             Cancel
           </Button>
-          <Button onClick={save} confirm>
+          <Button onClick={() => props.onSave(name, interviewer)} confirm>
             Save
           </Button>
         </section>
