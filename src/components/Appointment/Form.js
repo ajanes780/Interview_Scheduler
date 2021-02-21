@@ -27,6 +27,7 @@ export default function From(props) {
             onChange={(event) => setName(event.target.value)}
             onSubmit={(event) => event.preventDefault()}
             onCancel={() => {}}
+
             /*
             This must be a controlled component
             */

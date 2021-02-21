@@ -7,7 +7,7 @@ import useVisualMode from "hooks/useVisualMode";
 import Form from "components/Appointment/Form";
 import Status from "components/Appointment/Status";
 import Confirm from "components/Appointment/Confirm";
-import Error from "components/Appointment/Confirm";
+import Error from "components/Appointment/Error";
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const EDIT = "EDIT";
@@ -36,8 +36,9 @@ export default function Appointment(props) {
       .then(() => {
         transition(SHOW);
       })
-      .catch(() => {
-        transition(ERROR_SAVE);
+      // catch error code and display error view
+      .catch((err) => {
+        transition(ERROR_SAVE, true);
       });
   }
 
@@ -45,14 +46,16 @@ export default function Appointment(props) {
   function deleteAppointment(name, interviewer) {
     const interview = { student: name, interviewer };
 
-    transition(CONFIRM);
+    transition(CONFIRM, true);
     props
       .cancelInterview(props.id, interview)
       .then(() => {
         transition(EMPTY);
       })
-      .catch(() => {
-        transition(ERROR_DEL);
+      // catch error code and display error view
+      .catch((err) => {
+        transition(ERROR_DEL, true);
+        console.log("What did we catch ???? ");
       });
   }
 
@@ -63,19 +66,11 @@ export default function Appointment(props) {
       {mode === DELETING && <Status message="Deleting your appointment" />}
 
       {mode === ERROR_DEL && (
-        <Error
-          message="Could not delete appointment"
-          onClose={() => transition(CONFIRM)}
-        />
+        <Error message="Sorry we could not delete appointment" onClose={back} />
       )}
 
       {mode === ERROR_SAVE && (
-        <Error
-          message="Could not save appointment."
-          onClose={() => {
-            transition(EDIT);
-          }}
-        />
+        <Error message="Sorry we could not save appointment." onClose={back} />
       )}
 
       {mode === CONFIRM && (

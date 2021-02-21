@@ -35,14 +35,11 @@ export default function Application() {
       [id]: appointment,
     };
     // api call using axios to DB to update Appointment information
-    return axios
-      .put(`/api/appointments/${id}`, appointment)
-      .then((res) => {
+    return axios.put(`/api/appointments/${id}`, appointment).then((res) => {
+      if (res.status === 204) {
         setState({ ...state, appointments });
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
+      }
+    });
   }
 
   //  api call to remove date from DB using axios request
@@ -64,12 +61,10 @@ export default function Application() {
         interview: null,
       })
       .then((res) => {
-        console.log("WHAT BE HERE ");
-        setState({ ...state, appointments });
+        if (res.status === 204) {
+          setState({ ...state, appointments });
+        }
       });
-    // .catch((err) => {
-    //   console.log("error", err);
-    // });
   }
 
   const myMappedApp = dailyAppointments.map((app) => {
