@@ -59,8 +59,9 @@ export default function Appointment(props) {
       });
   }
 
+  // this is how i set up dynamic views in the app for each "mode"
   return (
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
       <Header time={props.time}></Header>
       {mode === EMPTY && <Empty onAdd={() => transition(FORM)} />}
       {mode === DELETING && <Status message="Deleting your appointment" />}
@@ -87,7 +88,7 @@ export default function Appointment(props) {
         <Show
           onEdit={() => transition(EDIT)}
           student={props.interview.student}
-          interview={props.interview} //PUTTING A NOTE HERE THIS IS DIFFERENT
+          interview={props.interview}
           interviewer={props.interview}
           onDelete={() => {
             transition(CONFIRM);
@@ -95,13 +96,7 @@ export default function Appointment(props) {
         />
       )}
       {mode === FORM && (
-        <Form
-          // name={props.interview.student}
-          interviewers={props.interviewers}
-          // interviewer={props.interview.interviewer.id}
-          onSave={save}
-          onCancel={back}
-        />
+        <Form interviewers={props.interviewers} onSave={save} onCancel={back} />
       )}
       {mode === EDIT && (
         <Form

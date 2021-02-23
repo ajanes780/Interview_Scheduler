@@ -13,7 +13,7 @@ export default function useApplicationData(props) {
 
   useEffect(() => {
     const urlDays = "http://localhost:8001/api/days";
-    const urlApp = " http://localhost:8001/api/appointments";
+    const urlApp = "http://localhost:8001/api/appointments";
     const urlInv = "http://localhost:8001/api/interviewers";
     Promise.all([
       axios.get(urlDays),
@@ -59,11 +59,8 @@ export default function useApplicationData(props) {
     // if interview is null result spots++
     // update the spots in the dayObj (which is part of days)
     // make sure to copy the original days so it updates state here
-
     // const newDays = [...days];
-
     //now updateSpots returns a completely new days array with an updated day object that doesn't affect original
-
     // return newDays;
   };
 
@@ -80,19 +77,17 @@ export default function useApplicationData(props) {
     };
 
     // api call using axios to DB to update Appointment information
-    return axios.put(`/api/appointments/${id}`, appointment).then((res) => {
+    // after testing add back return axios.put(`/api/appointments/${id}`, appointment).then((res) => {
+    return axios.put("/api/appointments", appointment).then((res) => {
       const days = updateSpots(state.day, state.days, appointments);
       setState((prev) => ({ ...prev, appointments, days }));
-      // setState({ ...state, appointments, days });
     });
   }
 
   //  api call to remove date from DB using axios request
   function cancelInterview(id) {
     const appointment = { ...state.appointments[id], interview: null };
-
     const appointments = { ...state.appointments, [id]: appointment };
-
     return axios.delete(`/api/appointments/${id}`).then((res) => {
       let days = updateSpots(state.day, state.days, appointments);
       setState((prev) => ({ ...prev, appointments, days }));
