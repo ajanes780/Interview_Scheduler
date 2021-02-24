@@ -2,6 +2,8 @@
 
 ## A WEB APP BUILT USING REACT(CRA)
 
+## PSQL DATABASE
+
 <img src="img_girl.jpg"  width="900" height="600">
 <img src="img_girl.jpg"  width="900" height="600">
 <img src="img_girl.jpg"  width="900" height="600">
