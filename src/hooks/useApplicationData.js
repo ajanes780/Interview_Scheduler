@@ -77,7 +77,7 @@ export default function useApplicationData(props) {
     };
 
     // api call using axios to DB to update Appointment information
-    // after testing add back then((res) => {
+
     return axios.put(`/api/appointments/${id}`, appointment).then((res) => {
       const days = updateSpots(state.day, state.days, appointments);
       setState((prev) => ({ ...prev, appointments, days }));

@@ -1,3 +1,14 @@
+# LIGHTHOUSE LABS 2021
+
+## A WEB APP BUILT USING REACT(CRA)
+
+<img src="img_girl.jpg"  width="900" height="600">
+<img src="img_girl.jpg"  width="900" height="600">
+<img src="img_girl.jpg"  width="900" height="600">
+<img src="img_girl.jpg"  width="900" height="600">
+<img src="img_girl.jpg"  width="900" height="600">
+<img src="img_girl.jpg"  width="900" height="600">
+
 # Interview Scheduler
 
 ## Setup
