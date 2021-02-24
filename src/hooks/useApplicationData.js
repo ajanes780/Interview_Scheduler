@@ -29,7 +29,7 @@ export default function useApplicationData(props) {
     });
   }, []);
 
-  // UPDATE SPOTS CODE ALONG
+  // UPDATE SPOTS CODE ALONG DON'T MUTATE STATE
   // null interview === spots available
   // count appointments for day that have an empty interview
   const updateSpots = function (day, days, appointments) {
@@ -55,7 +55,6 @@ export default function useApplicationData(props) {
     const newDayObj = { ...dayObj, spots };
     const newArray = days.map((item) => (item.name === day ? newDayObj : item));
     return newArray;
-
     // if interview is null result spots++
     // update the spots in the dayObj (which is part of days)
     // make sure to copy the original days so it updates state here

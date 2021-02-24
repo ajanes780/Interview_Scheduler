@@ -56,7 +56,6 @@ export default function Appointment(props) {
       // catch error code and display error view
       .catch((err) => {
         transition(ERROR_DEL, true);
-        console.log("What did we catch ???? ");
       });
   }
 

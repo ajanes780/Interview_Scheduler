@@ -51,16 +51,14 @@ function getInterviewersForDay(state, day) {
   const found = state.days.find((dayObject) => dayObject.name === day);
   if (found === undefined) {
     let result = [];
-    // console.log("undefined result", state.days.name);
     return result;
   }
   const foundMap = found.appointments.map((id) => state.appointments[id]);
-  // const timeMap = found.appointments.map((id) => state.appointments[id].time);
+  // const timeMap = found.appointments.map((id) => state.appointments[id].time) // i may use this;
+
   let result = foundMap;
-  console.log("this is state.appointments", state);
-  console.log("this is result", result);
 
   return result;
 }
 
-getInterviewersForDay(sta);
+// getInterviewersForDay(sta);
