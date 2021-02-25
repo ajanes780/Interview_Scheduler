@@ -3,6 +3,8 @@
 
 ## A WEB APP BUILT USING REACT(CRA)
 ## PSQL DATABASE 
+## Deployed Database to Heroko and React app to Netify
+
 <img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-55-50.png?raw=true"  width="700" height="600">
 <img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-16.png?raw=true"  width="700" height="600">
 <img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-29.png?raw=true"  width="700" height="600">
