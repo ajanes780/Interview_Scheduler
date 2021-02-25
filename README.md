@@ -1,18 +1,11 @@
 # LIGHTHOUSE LABS 2021 
 # Interview Scheduler
 
-### A WEB APP BUILT USING REACT(CRA)
-### PSQL DATABASE 
-### Deployed Database to Heroko and React app to Netify
 
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-55-50.png?raw=true"  width="700" height="600">
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-16.png?raw=true"  width="700" height="600">
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-29.png?raw=true"  width="700" height="600">
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-45.png?raw=true"  width="700" height="600">
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-57-17.png?raw=true  width="700" height="600">
-<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-57-32.png?raw=true"  width="700" height="600">
-
-devDependencies
+##### React application that allows users to book and cancel interviews. 
+We combined a concise API with a WebSocket server to build a realtime experience.
+#### Deployed Database to Heroko and React app to Netify
+#### devDependencies
     babel/core: 7.4.3,
     storybook/addon-actions: 5.0.10,
     storybook/addon-backgrounds: 5.0.10,
@@ -25,6 +18,17 @@ devDependencies
     babel-loader: ^8.0.5,
     ode-sass: 4.14.0,
     prop-types: 15.7.2
+   
+
+
+
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-55-50.png?raw=true"  width="700" height="600">
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-16.png?raw=true"  width="700" height="600">
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-29.png?raw=true"  width="700" height="600">
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-56-45.png?raw=true"  width="700" height="600">
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-57-17.png?raw=true  width="700" height="600">
+<img src="https://github.com/ajanes780/Interview_Scheduler/blob/master/Images/Screenshot%20from%202021-02-24%2015-57-32.png?raw=true"  width="700" height="600">
+
 
 
  
