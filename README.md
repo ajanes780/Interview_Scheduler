@@ -4,7 +4,7 @@
 
 ##### React application that allows users to book and cancel interviews. 
 We combined a concise API with a WebSocket server to build a realtime experience.
-#### Deployed Database to Heroko and React app to Netify
+Deployed Database to Heroko and React app to Netify
 #### devDependencies
     babel/core: 7.4.3,
     storybook/addon-actions: 5.0.10,
