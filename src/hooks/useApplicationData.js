@@ -12,9 +12,9 @@ export default function useApplicationData(props) {
   const setDay = (day) => setState({ ...state, day });
 
   useEffect(() => {
-    const urlDays = "http://localhost:8001/api/days";
-    const urlApp = "http://localhost:8001/api/appointments";
-    const urlInv = "http://localhost:8001/api/interviewers";
+    const urlDays = "https://lhlscheduler-api.herokuapp.com/api/days";
+    const urlApp = "https://lhlscheduler-api.herokuapp.com/api/appointments";
+    const urlInv = "https://lhlscheduler-api.herokuapp.com/api/interviewers";
     Promise.all([
       axios.get(urlDays),
       axios.get(urlApp),
